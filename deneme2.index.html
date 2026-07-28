@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Satış Takip Programı</title>
+
+<link rel="manifest" href="manifest.json">
+
+
+<meta name="theme-color" content="#0b79d0">
+
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+
+font-family:Arial, Helvetica, sans-serif;
+background:#eef2f7;
+margin:0;
+padding:0;
+
+}
+
+
+.container{
+
+width:100%;
+min-height:100vh;
+background:white;
+padding:10px;
+
+}
+
+
+h2{
+
+text-align:center;
+font-size:20px;
+color:#0b79d0;
+margin:5px;
+
+}
+
+
+/* GİRİŞ ALANI */
+
+input,
+select{
+
+width:100%;
+height:42px;
+
+margin:4px 0;
+
+font-size:16px;
+
+padding:8px;
+
+border:1px solid #ccc;
+
+border-radius:8px;
+
+}
+
+
+
+/* KAYDET */
+
+button{
+
+width:100%;
+
+height:42px;
+
+margin:4px 0;
+
+background:#0b79d0;
+
+color:white;
+
+font-size:15px;
+
+font-weight:bold;
+
+border:none;
+
+border-radius:8px;
+
+}
+
+
+/* TABLO KAYDIRMA */
+
+.tableBox{
+
+width:100%;
+
+overflow-x:auto;
+
+}
+
+
+/* TABLO */
+
+table{
+
+width:900px;
+
+border-collapse:collapse;
+
+margin-top:10px;
+
+}
+
+
+
+th{
+
+background:#0b79d0;
+
+color:white;
+
+font-size:12px;
+
+}
+
+
+th,
+td{
+
+border:1px solid #ccc;
+
+padding:5px;
+
+text-align:center;
+
+font-size:12px;
+
+white-space:nowrap;
+
+}
+
+
+
+/* FİLTRELER */
+
+thead input{
+
+width:70px;
+
+height:25px;
+
+font-size:11px;
+
+padding:2px;
+
+}
+
+
+
+/* DÜZENLE SİL */
+
+td button{
+
+width:auto;
+
+height:28px;
+
+font-size:11px;
+
+padding:4px 6px;
+
+}
+
+
+/* TOPLAM KARTLARI */
+
+.toplam{
+
+display:block;
+
+margin-top:15px;
+
+}
+
+
+
+.toplam div{
+
+background:white;
+
+margin:8px 0;
+
+padding:12px;
+
+border-radius:10px;
+
+box-shadow:0 2px 8px #ccc;
+
+font-size:15px;
+
+font-weight:bold;
+
+border-left:6px solid #0b79d0;
+
+}
+
+
+
+.toplam span{
+
+display:block;
+
+font-size:24px;
+
+margin-top:5px;
+
+}
+
+
+/* TOPLAM RENKLERİ */
+
+.toplam div:nth-child(1){
+
+border-left-color:#f39c12;
+
+}
+
+
+.toplam div:nth-child(2){
+
+border-left-color:#2980b9;
+
+}
+
+
+.toplam div:nth-child(3){
+
+border-left-color:#27ae60;
+
+}
+
+
+.toplam div:nth-child(4){
+
+border-left-color:#8e44ad;
+
+}
+
+
+.toplam div:nth-child(5){
+
+border-left-color:#e74c3c;
+
+}
+
+/* ===========================
+   RENKLENDİRME
+=========================== */
+
+
+/* ARKA PLAN */
+
+body{
+
+background:linear-gradient(135deg,#dbeafe,#fce7f3);
+
+}
+
+
+/* ANA PANEL */
+
+.container{
+
+background:#ffffff;
+
+box-shadow:0 5px 20px rgba(0,0,0,0.15);
+
+}
+
+
+/* BAŞLIK */
+
+h2{
+
+background:linear-gradient(90deg,#1565c0,#42a5f5);
+
+color:white;
+
+padding:15px;
+
+border-radius:10px;
+
+box-shadow:0 3px 8px rgba(0,0,0,.2);
+
+}
+
+
+/* GİRİŞ ALANLARI */
+
+input,
+select{
+
+background:#fff8e1;
+
+border:2px solid #ffcc80;
+
+}
+
+
+input:focus,
+select:focus{
+
+background:#e3f2fd;
+
+border-color:#2196f3;
+
+}
+
+
+/* KAYDET BUTONU */
+
+button{
+
+background:linear-gradient(90deg,#0b79d0,#00b4d8);
+
+}
+
+
+button:hover{
+
+background:linear-gradient(90deg,#095c9d,#0077b6);
+
+}
+
+
+/* TABLO BAŞLIK */
+
+th{
+
+background:linear-gradient(90deg,#1565c0,#1e88e5);
+
+}
+
+
+/* TABLO SATIRLARI */
+
+tbody tr:nth-child(even){
+
+background:#f3f8ff;
+
+}
+
+
+tbody tr:hover{
+
+background:#fff3cd;
+
+}
+
+
+/* FİLTRE KUTULARI */
+
+thead input{
+
+background:#ffffff;
+
+border:2px solid #90caf9;
+
+}
+
+
+/* TOPLAM KARTLARI */
+
+.toplam div{
+
+transition:.3s;
+
+}
+
+
+/* ALIŞ */
+
+.toplam div:nth-child(1){
+
+background:#fff3cd;
+
+border-left-color:#f39c12;
+
+}
+
+
+/* SATIŞ */
+
+.toplam div:nth-child(2){
+
+background:#e3f2fd;
+
+border-left-color:#1976d2;
+
+}
+
+
+/* KÂR */
+
+.toplam div:nth-child(3){
+
+background:#e8f5e9;
+
+border-left-color:#2e7d32;
+
+}
+
+
+/* TAHSİLAT */
+
+.toplam div:nth-child(4){
+
+background:#f3e5f5;
+
+border-left-color:#8e44ad;
+
+}
+
+
+/* KALAN */
+
+.toplam div:nth-child(5){
+
+background:#ffebee;
+
+border-left-color:#d32f2f;
+
+}
+
+
+.toplam div:hover{
+
+transform:scale(1.02);
+
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Satış Takip Programı</h2>
+
+<select id="urun">
+<option>Nar Ekşisi</option>
+<option>Salata Sosu</option>
+<option>Çiğköfte Sosu</option>
+<option>Limon Suyu</option>
+<option>Sirke</option>
+</select>
+
+<input type="text" id="firma" placeholder="Firma">
+
+<input type="number" id="alis" placeholder="Alış Fiyatı">
+
+<input type="number" id="satis" placeholder="Satış Fiyatı">
+
+<input type="number" id="adet" placeholder="Adet">
+
+<input type="date" id="tarih">
+
+<input type="time" id="saat">
+
+<input type="number" id="odeme" placeholder="Ödeme">
+
+<button onclick="kaydet()">Kaydet</button>
+
+
+<div class="tableBox">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Ürün<br><input type="text" id="f0" onkeyup="filtrele()"></th>
+<th>Firma<br><input type="text" id="f1" onkeyup="filtrele()"></th>
+<th>Alış<br><input type="text" id="f2" onkeyup="filtrele()"></th>
+<th>Satış<br><input type="text" id="f3" onkeyup="filtrele()"></th>
+<th>Adet<br><input type="text" id="f4" onkeyup="filtrele()"></th>
+<th>Alış Toplam<br><input type="text" id="f5" onkeyup="filtrele()"></th>
+<th>Satış Toplam<br><input type="text" id="f6" onkeyup="filtrele()"></th>
+<th>Tarih<br><input type="text" id="f7" onkeyup="filtrele()"></th>
+<th>Saat<br><input type="text" id="f8" onkeyup="filtrele()"></th>
+<th>Ödeme<br><input type="text" id="f9" onkeyup="filtrele()"></th>
+<th>Kalan<br><input type="text" id="f10" onkeyup="filtrele()"></th>
+<th>Kâr<br><input type="text" id="f11" onkeyup="filtrele()"></th>
+<th>İşlem</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="liste">
+
+</tbody>
+
+
+</table>
+
+<div>
+Toplam Alış
+<span id="toplamAlis">0</span>
+</div>
+
+<div>
+Toplam Satış
+<span id="toplamSatis">0</span>
+</div>
+
+<div>
+Toplam Kâr
+<span id="toplamKar">0</span>
+</div>
+
+<div>
+Toplam Tahsilat
+<span id="toplamOdeme">0</span>
+</div>
+
+<div>
+Toplam Kalan
+<span id="toplamKalan">0</span>
+</div>
+
+</div>
+
+<script>
+
+let veriler=[];
+let duzenleIndex=-1;
+
+window.onload=function(){
+
+let bugun=new Date();
+
+document.getElementById("tarih").value=bugun.toISOString().split("T")[0];
+
+document.getElementById("saat").value=bugun.toTimeString().slice(0,5);
+
+}
+
+function kaydet(){
+
+let urun=document.getElementById("urun").value;
+let firma=document.getElementById("firma").value;
+let alis=Number(document.getElementById("alis").value);
+let satis=Number(document.getElementById("satis").value);
+let adet=Number(document.getElementById("adet").value);
+let tarih=document.getElementById("tarih").value;
+let saat=document.getElementById("saat").value;
+let odeme=Number(document.getElementById("odeme").value);
+
+let alisToplam=alis*adet;
+let satisToplam=satis*adet;
+let kar=satisToplam-alisToplam;
+let kalan=satisToplam-odeme;
+
+let kayit={
+
+urun,
+firma,
+alis,
+satis,
+adet,
+alisToplam,
+satisToplam,
+tarih,
+saat,
+odeme,
+kalan,
+kar
+
+};
+
+if(duzenleIndex==-1){
+
+veriler.push(kayit);
+
+}else{
+
+veriler[duzenleIndex]=kayit;
+duzenleIndex=-1;
+
+}
+
+temizle();
+goster();
+
+}
+
+function goster(){
+
+let html="";
+
+let genelAlis=0;
+let genelSatis=0;
+let genelKar=0;
+let genelOdeme=0;
+let genelKalan=0;
+
+veriler.forEach(function(x,index){
+
+genelAlis+=x.alisToplam;
+genelSatis+=x.satisToplam;
+genelKar+=x.kar;
+genelOdeme+=x.odeme;
+genelKalan+=x.kalan;
+
+html+=`
+
+<tr>
+
+<td>${x.urun}</td>
+
+<td>${x.firma}</td>
+
+<td>${x.alis.toFixed(2)}</td>
+
+<td>${x.satis.toFixed(2)}</td>
+
+<td>${x.adet}</td>
+
+<td>${x.alisToplam.toFixed(2)}</td>
+
+<td>${x.satisToplam.toFixed(2)}</td>
+
+<td>${x.tarih}</td>
+
+<td>${x.saat}</td>
+
+<td>${x.odeme.toFixed(2)}</td>
+
+<td>${x.kalan.toFixed(2)}</td>
+
+<td>${x.kar.toFixed(2)}</td>
+
+<td>
+
+<button onclick="duzenle(${index})">Düzenle</button>
+
+<button onclick="sil(${index})">Sil</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+document.getElementById("liste").innerHTML=html;
+
+document.getElementById("toplamAlis").innerHTML=genelAlis.toFixed(2);
+
+document.getElementById("toplamSatis").innerHTML=genelSatis.toFixed(2);
+
+document.getElementById("toplamKar").innerHTML=genelKar.toFixed(2);
+
+document.getElementById("toplamOdeme").innerHTML=genelOdeme.toFixed(2);
+
+document.getElementById("toplamKalan").innerHTML=genelKalan.toFixed(2);
+
+}
+
+function duzenle(index){
+
+let x=veriler[index];
+
+document.getElementById("urun").value=x.urun;
+document.getElementById("firma").value=x.firma;
+document.getElementById("alis").value=x.alis;
+document.getElementById("satis").value=x.satis;
+document.getElementById("adet").value=x.adet;
+document.getElementById("tarih").value=x.tarih;
+document.getElementById("saat").value=x.saat;
+document.getElementById("odeme").value=x.odeme;
+
+duzenleIndex=index;
+
+}
+
+function sil(index){
+
+if(confirm("Kayıt silinsin mi?")){
+
+veriler.splice(index,1);
+
+goster();
+
+}
+
+}
+
+function temizle(){
+
+document.getElementById("firma").value="";
+document.getElementById("alis").value="";
+document.getElementById("satis").value="";
+document.getElementById("adet").value="";
+document.getElementById("odeme").value="";
+
+let bugun=new Date();
+
+document.getElementById("tarih").value=bugun.toISOString().split("T")[0];
+
+document.getElementById("saat").value=bugun.toTimeString().slice(0,5);
+
+}
+function filtrele(){
+
+let satirlar=document.querySelectorAll("#liste tr");
+
+let genelAlis=0;
+let genelSatis=0;
+let genelKar=0;
+let genelOdeme=0;
+let genelKalan=0;
+
+satirlar.forEach(function(satir){
+
+    let goster=true;
+
+    for(let i=0;i<12;i++){
+
+        let filtre=document.getElementById("f"+i).value.toLowerCase();
+
+        let hucre=satir.cells[i].innerText.toLowerCase();
+
+        if(!hucre.includes(filtre)){
+            goster=false;
+            break;
+        }
+
+    }
+
+    satir.style.display=goster ? "" : "none";
+
+    if(goster){
+
+        genelAlis += Number(satir.cells[5].innerText);
+        genelSatis += Number(satir.cells[6].innerText);
+        genelOdeme += Number(satir.cells[9].innerText);
+        genelKalan += Number(satir.cells[10].innerText);
+        genelKar += Number(satir.cells[11].innerText);
+
+    }
+
+});
+
+document.getElementById("toplamAlis").innerHTML=genelAlis.toFixed(2);
+document.getElementById("toplamSatis").innerHTML=genelSatis.toFixed(2);
+document.getElementById("toplamKar").innerHTML=genelKar.toFixed(2);
+document.getElementById("toplamOdeme").innerHTML=genelOdeme.toFixed(2);
+document.getElementById("toplamKalan").innerHTML=genelKalan.toFixed(2);
+
+}
+
+</script>
+
+
+<script>
+
+if("serviceWorker" in navigator){
+
+window.addEventListener("load",function(){
+
+navigator.serviceWorker.register("sw.js");
+
+});
+
+}
+
+</script>
+
+
+</body>
+</html>
