@@ -1,800 +1,546 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<title>Satış Takip Programı</title>
-
-<link rel="manifest" href="manifest.json">
-
-
-<meta name="theme-color" content="#0b79d0">
-
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-
-<meta name="mobile-web-app-capable" content="yes">
-
-<style>
-
-*{
-box-sizing:border-box;
-}
-
-body{
-
-font-family:Arial, Helvetica, sans-serif;
-background:#eef2f7;
-margin:0;
-padding:0;
-
-}
-
-
-.container{
-
-width:100%;
-min-height:100vh;
-background:white;
-padding:10px;
-
-}
-
-
-h2{
-
-text-align:center;
-font-size:20px;
-color:#0b79d0;
-margin:5px;
-
-}
-
-
-/* GİRİŞ ALANI */
-
-input,
-select{
-
-width:100%;
-height:42px;
-
-margin:4px 0;
-
-font-size:16px;
-
-padding:8px;
-
-border:1px solid #ccc;
-
-border-radius:8px;
-
-}
-
-
-
-/* KAYDET */
-
-button{
-
-width:100%;
-
-height:42px;
-
-margin:4px 0;
-
-background:#0b79d0;
-
-color:white;
-
-font-size:15px;
-
-font-weight:bold;
-
-border:none;
-
-border-radius:8px;
-
-}
-
-
-/* TABLO KAYDIRMA */
-
-.tableBox{
-
-width:100%;
-
-overflow-x:auto;
-
-}
-
-
-/* TABLO */
-
-table{
-
-width:900px;
-
-border-collapse:collapse;
-
-margin-top:10px;
-
-}
-
-
-
-th{
-
-background:#0b79d0;
-
-color:white;
-
-font-size:12px;
-
-}
-
-
-th,
-td{
-
-border:1px solid #ccc;
-
-padding:5px;
-
-text-align:center;
-
-font-size:12px;
-
-white-space:nowrap;
-
-}
-
-
-
-/* FİLTRELER */
-
-thead input{
-
-width:70px;
-
-height:25px;
-
-font-size:11px;
-
-padding:2px;
-
-}
-
-
-
-/* DÜZENLE SİL */
-
-td button{
-
-width:auto;
-
-height:28px;
-
-font-size:11px;
-
-padding:4px 6px;
-
-}
-
-
-/* TOPLAM KARTLARI */
-
-.toplam{
-
-display:block;
-
-margin-top:15px;
-
-}
-
-
-
-.toplam div{
-
-background:white;
-
-margin:8px 0;
-
-padding:12px;
-
-border-radius:10px;
-
-box-shadow:0 2px 8px #ccc;
-
-font-size:15px;
-
-font-weight:bold;
-
-border-left:6px solid #0b79d0;
-
-}
-
-
-
-.toplam span{
-
-display:block;
-
-font-size:24px;
-
-margin-top:5px;
-
-}
-
-
-/* TOPLAM RENKLERİ */
-
-.toplam div:nth-child(1){
-
-border-left-color:#f39c12;
-
-}
-
-
-.toplam div:nth-child(2){
-
-border-left-color:#2980b9;
-
-}
-
-
-.toplam div:nth-child(3){
-
-border-left-color:#27ae60;
-
-}
-
-
-.toplam div:nth-child(4){
-
-border-left-color:#8e44ad;
-
-}
-
-
-.toplam div:nth-child(5){
-
-border-left-color:#e74c3c;
-
-}
-
-/* ===========================
-   RENKLENDİRME
-=========================== */
-
-
-/* ARKA PLAN */
-
-body{
-
-background:linear-gradient(135deg,#dbeafe,#fce7f3);
-
-}
-
-
-/* ANA PANEL */
-
-.container{
-
-background:#ffffff;
-
-box-shadow:0 5px 20px rgba(0,0,0,0.15);
-
-}
-
-
-/* BAŞLIK */
-
-h2{
-
-background:linear-gradient(90deg,#1565c0,#42a5f5);
-
-color:white;
-
-padding:15px;
-
-border-radius:10px;
-
-box-shadow:0 3px 8px rgba(0,0,0,.2);
-
-}
-
-
-/* GİRİŞ ALANLARI */
-
-input,
-select{
-
-background:#fff8e1;
-
-border:2px solid #ffcc80;
-
-}
-
-
-input:focus,
-select:focus{
-
-background:#e3f2fd;
-
-border-color:#2196f3;
-
-}
-
-
-/* KAYDET BUTONU */
-
-button{
-
-background:linear-gradient(90deg,#0b79d0,#00b4d8);
-
-}
-
-
-button:hover{
-
-background:linear-gradient(90deg,#095c9d,#0077b6);
-
-}
-
-
-/* TABLO BAŞLIK */
-
-th{
-
-background:linear-gradient(90deg,#1565c0,#1e88e5);
-
-}
-
-
-/* TABLO SATIRLARI */
-
-tbody tr:nth-child(even){
-
-background:#f3f8ff;
-
-}
-
-
-tbody tr:hover{
-
-background:#fff3cd;
-
-}
-
-
-/* FİLTRE KUTULARI */
-
-thead input{
-
-background:#ffffff;
-
-border:2px solid #90caf9;
-
-}
-
-
-/* TOPLAM KARTLARI */
-
-.toplam div{
-
-transition:.3s;
-
-}
-
-
-/* ALIŞ */
-
-.toplam div:nth-child(1){
-
-background:#fff3cd;
-
-border-left-color:#f39c12;
-
-}
-
-
-/* SATIŞ */
-
-.toplam div:nth-child(2){
-
-background:#e3f2fd;
-
-border-left-color:#1976d2;
-
-}
-
-
-/* KÂR */
-
-.toplam div:nth-child(3){
-
-background:#e8f5e9;
-
-border-left-color:#2e7d32;
-
-}
-
-
-/* TAHSİLAT */
-
-.toplam div:nth-child(4){
-
-background:#f3e5f5;
-
-border-left-color:#8e44ad;
-
-}
-
-
-/* KALAN */
-
-.toplam div:nth-child(5){
-
-background:#ffebee;
-
-border-left-color:#d32f2f;
-
-}
-
-
-.toplam div:hover{
-
-transform:scale(1.02);
-
-box-shadow:0 5px 15px rgba(0,0,0,.2);
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="container">
-
-<h2>Satış Takip Programı</h2>
-
-<select id="urun">
-<option>Nar Ekşisi</option>
-<option>Salata Sosu</option>
-<option>Çiğköfte Sosu</option>
-<option>Limon Suyu</option>
-<option>Sirke</option>
-</select>
-
-<input type="text" id="firma" placeholder="Firma">
-
-<input type="number" id="alis" placeholder="Alış Fiyatı">
-
-<input type="number" id="satis" placeholder="Satış Fiyatı">
-
-<input type="number" id="adet" placeholder="Adet">
-
-<input type="date" id="tarih">
-
-<input type="time" id="saat">
-
-<input type="number" id="odeme" placeholder="Ödeme">
-
-<button onclick="kaydet()">Kaydet</button>
-
-
-<div class="tableBox">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Ürün<br><input type="text" id="f0" onkeyup="filtrele()"></th>
-<th>Firma<br><input type="text" id="f1" onkeyup="filtrele()"></th>
-<th>Alış<br><input type="text" id="f2" onkeyup="filtrele()"></th>
-<th>Satış<br><input type="text" id="f3" onkeyup="filtrele()"></th>
-<th>Adet<br><input type="text" id="f4" onkeyup="filtrele()"></th>
-<th>Alış Toplam<br><input type="text" id="f5" onkeyup="filtrele()"></th>
-<th>Satış Toplam<br><input type="text" id="f6" onkeyup="filtrele()"></th>
-<th>Tarih<br><input type="text" id="f7" onkeyup="filtrele()"></th>
-<th>Saat<br><input type="text" id="f8" onkeyup="filtrele()"></th>
-<th>Ödeme<br><input type="text" id="f9" onkeyup="filtrele()"></th>
-<th>Kalan<br><input type="text" id="f10" onkeyup="filtrele()"></th>
-<th>Kâr<br><input type="text" id="f11" onkeyup="filtrele()"></th>
-<th>İşlem</th>
-
-</tr>
-
-</thead>
-
-
-<tbody id="liste">
-
-</tbody>
-
-
-</table>
-
-<div>
-Toplam Alış
-<span id="toplamAlis">0</span>
-</div>
-
-<div>
-Toplam Satış
-<span id="toplamSatis">0</span>
-</div>
-
-<div>
-Toplam Kâr
-<span id="toplamKar">0</span>
-</div>
-
-<div>
-Toplam Tahsilat
-<span id="toplamOdeme">0</span>
-</div>
-
-<div>
-Toplam Kalan
-<span id="toplamKalan">0</span>
-</div>
-
-</div>
-
-<script>
-
-let veriler=[];
-let duzenleIndex=-1;
-
-window.onload=function(){
-
-let bugun=new Date();
-
-document.getElementById("tarih").value=bugun.toISOString().split("T")[0];
-
-document.getElementById("saat").value=bugun.toTimeString().slice(0,5);
-
-}
-
-function kaydet(){
-
-let urun=document.getElementById("urun").value;
-let firma=document.getElementById("firma").value;
-let alis=Number(document.getElementById("alis").value);
-let satis=Number(document.getElementById("satis").value);
-let adet=Number(document.getElementById("adet").value);
-let tarih=document.getElementById("tarih").value;
-let saat=document.getElementById("saat").value;
-let odeme=Number(document.getElementById("odeme").value);
-
-let alisToplam=alis*adet;
-let satisToplam=satis*adet;
-let kar=satisToplam-alisToplam;
-let kalan=satisToplam-odeme;
-
-let kayit={
-
-urun,
-firma,
-alis,
-satis,
-adet,
-alisToplam,
-satisToplam,
-tarih,
-saat,
-odeme,
-kalan,
-kar
-
-};
-
-if(duzenleIndex==-1){
-
-veriler.push(kayit);
-
-}else{
-
-veriler[duzenleIndex]=kayit;
-duzenleIndex=-1;
-
-}
-
-temizle();
-goster();
-
-}
-
-function goster(){
-
-let html="";
-
-let genelAlis=0;
-let genelSatis=0;
-let genelKar=0;
-let genelOdeme=0;
-let genelKalan=0;
-
-veriler.forEach(function(x,index){
-
-genelAlis+=x.alisToplam;
-genelSatis+=x.satisToplam;
-genelKar+=x.kar;
-genelOdeme+=x.odeme;
-genelKalan+=x.kalan;
-
-html+=`
-
-<tr>
-
-<td>${x.urun}</td>
-
-<td>${x.firma}</td>
-
-<td>${x.alis.toFixed(2)}</td>
-
-<td>${x.satis.toFixed(2)}</td>
-
-<td>${x.adet}</td>
-
-<td>${x.alisToplam.toFixed(2)}</td>
-
-<td>${x.satisToplam.toFixed(2)}</td>
-
-<td>${x.tarih}</td>
-
-<td>${x.saat}</td>
-
-<td>${x.odeme.toFixed(2)}</td>
-
-<td>${x.kalan.toFixed(2)}</td>
-
-<td>${x.kar.toFixed(2)}</td>
-
-<td>
-
-<button onclick="duzenle(${index})">Düzenle</button>
-
-<button onclick="sil(${index})">Sil</button>
-
-</td>
-
-</tr>
-
-`;
-
-});
-
-document.getElementById("liste").innerHTML=html;
-
-document.getElementById("toplamAlis").innerHTML=genelAlis.toFixed(2);
-
-document.getElementById("toplamSatis").innerHTML=genelSatis.toFixed(2);
-
-document.getElementById("toplamKar").innerHTML=genelKar.toFixed(2);
-
-document.getElementById("toplamOdeme").innerHTML=genelOdeme.toFixed(2);
-
-document.getElementById("toplamKalan").innerHTML=genelKalan.toFixed(2);
-
-}
-
-function duzenle(index){
-
-let x=veriler[index];
-
-document.getElementById("urun").value=x.urun;
-document.getElementById("firma").value=x.firma;
-document.getElementById("alis").value=x.alis;
-document.getElementById("satis").value=x.satis;
-document.getElementById("adet").value=x.adet;
-document.getElementById("tarih").value=x.tarih;
-document.getElementById("saat").value=x.saat;
-document.getElementById("odeme").value=x.odeme;
-
-duzenleIndex=index;
-
-}
-
-function sil(index){
-
-if(confirm("Kayıt silinsin mi?")){
-
-veriler.splice(index,1);
-
-goster();
-
-}
-
-}
-
-function temizle(){
-
-document.getElementById("firma").value="";
-document.getElementById("alis").value="";
-document.getElementById("satis").value="";
-document.getElementById("adet").value="";
-document.getElementById("odeme").value="";
-
-let bugun=new Date();
-
-document.getElementById("tarih").value=bugun.toISOString().split("T")[0];
-
-document.getElementById("saat").value=bugun.toTimeString().slice(0,5);
-
-}
-function filtrele(){
-
-let satirlar=document.querySelectorAll("#liste tr");
-
-let genelAlis=0;
-let genelSatis=0;
-let genelKar=0;
-let genelOdeme=0;
-let genelKalan=0;
-
-satirlar.forEach(function(satir){
-
-    let goster=true;
-
-    for(let i=0;i<12;i++){
-
-        let filtre=document.getElementById("f"+i).value.toLowerCase();
-
-        let hucre=satir.cells[i].innerText.toLowerCase();
-
-        if(!hucre.includes(filtre)){
-            goster=false;
-            break;
-        }
-
+<!doctype html>
+<html lang="tr"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20261012-04-4942f96","C":{"Abril Fatface":"YACgEZbkUVE,0","Albert Sans":"YAHO2HRfeh4,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo Black":"YACgEZulLoA,0","Archivo":"YAHO2-t-jNE,0","Arial":"YAGyDvJ_4Ts,0","Baloo 2":"YAHO2IcQUcM,0","Barlow Condensed":"YAFdJljEuFc,0","Barlow":"YAFdJsyuOPM,1","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Canva Sans":"YAFdJjTk5UU,1","Caveat":"YALBs2ploWQ,0","Cinzel":"YACgEeV8bIQ,0","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","Courier Prime":"YAD1aFjegN8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Figtree":"YAHO2b-mV7A,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAFdJpU7Kkk,0","Fredoka":"YACgEZml080,0","Georgia":"YAGzXkO0pEM,0","Hanken Grotesk":"YAHO2VB9G0I,0","Helvetica":"YAFcf7zkXN0,0","IBM Plex Mono":"YAFdJkmvhGI,0","IBM Plex Sans":"YAFdJgT0SHI,0","Impact":"YAFcfnjI7Vk,0","Instrument Sans":"YAHO2bKyaSQ,0","Instrument Serif":"YAHFeOnZNEk,0","Inter":"YAFdJvSyp_k,3","Italiana":"YAHO2Toik_w,0","Jacques Francois":"YAHO2a5g66Q,0","JetBrains Mono":"YAFdJksXcAk,0","Josefin Sans":"YAFdJjvw9Ps,0","Karla":"YAHO2V2NSXM,0","Lato":"YAFdJuFCnaw,0","Libre Baskerville":"YACgEUFdPdA,0","Libre Caslon Display":"YAHO2XhLmt0,0","Lobster":"YAD8SnSjSFI,0","Lora":"YACgEXvxf8Q,0","Manrope":"YAHO2b2feC4,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YAFdtQi73Xs,0","Noto Sans JP":"YAFdJiHXlcI,0","Noto Sans KR":"YAGsojZj-RQ,0","Nunito Sans":"YAFdtQJYB9w,1","Nunito":"YAFdJoNRMmU,1","Oleo Script":"YACgEQQ14jI,0","Oswald":"YACgEQY10lw,0","Outfit":"YAHO2nVlg14,0","Pacifico":"YADLjORQ1u4,0","Playfair Display":"YAFdJhem5V8,1","Plus Jakarta Sans":"YAHO2gdhi18,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Public Sans":"YAFdJj8NdaU,1","Quicksand":"YAFdJpYtCxE,1","Raleway":"YAFdJhmxbVQ,1","Roboto Slab":"YAFdJswIKAg,0","Rockwell":"YAFcfyVZnN0,0","Rye":"YACgEdQP21k,0","Sarabun":"YAFdJssSnME,0","Schibsted Grotesk":"YAHO2sWydRk,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Space Grotesk":"YAHO2sjPCSM,0","Space Mono":"YADW1-vpsoc,0","Spectral":"YAHO2rVUHIM,0","Times New Roman":"YAGzXW3gftg,0","Trebuchet MS":"YAFcfrglpVA,0","Ubuntu":"YACgERDU--Q,0","Verdana":"YAGzXTctYtQ,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0"}}');</script><script src="/_sdk/486a2977e39ad380.telemetry_sdk.js" integrity="sha512-6RGhG0lZ6QriXSp9fyZ35krENb9O9A9i6UklGaEPAGRJqlg443gszr5+rhcE8tJU48EjVhUuSuTu4g7tRHuFHA=="></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7f3">
+  <meta name="description" content="Barbaros Aşıcı — satış yönetimi, iş geliştirme ve analitik bakış. İzmir, Türkiye.">
+  <title>Barbaros Aşıcı | Satış Yönetimi ve İş Geliştirme</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,400;9..144,600&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#292d2a;--muted:#49534d;--gold:#80653d;--green:#216552;--line:#d8d8d0;--paper:#fffefa}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;width:100%;font-family:"DM Sans",sans-serif;color:var(--ink);line-height:1.6}
+    [hidden]{display:none!important}button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:inherit}
+    :focus-visible{outline:3px solid var(--green)!important;outline-offset:3px}
+    .serif{font-family:Fraunces,serif}.muted{color:var(--muted)}.gold{color:var(--gold)}.eyebrow{color:var(--gold);font-size:.76rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+    .shell{width:100%;overflow:clip;background:radial-gradient(circle at 84% 8%,#e9ddc885,transparent 29%),radial-gradient(circle at 4% 42%,#e7eee890,transparent 27%)}
+    .wrap{width:min(100%,1200px);margin:auto;padding:82px 24px;scroll-margin-top:80px}
+    .glass{background:#fffefaf0;border:1px solid var(--line);box-shadow:0 15px 42px #2b33200b;backdrop-filter:blur(16px)}
+    .btn,.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 17px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);text-decoration:none;transition:transform .22s,box-shadow .22s,border-color .22s}
+    .btn:hover,.pill:hover{transform:translateY(-2px);border-color:#a98d64;box-shadow:0 10px 22px #292d2a1a}
+    .primary{background:#80653d;color:white;border-color:#80653d}.field{width:100%;min-height:45px;border:1px solid #aeb9b0;border-radius:12px;padding:10px 14px;background:white;color:var(--ink)}
+    .field-label{display:block;margin:12px 0 5px;font-weight:600;font-size:.88rem}.error{color:#9d302b;font-size:.86rem;min-height:20px}
+    .site-head{position:sticky;top:0;z-index:45;background:#faf9f6ee;border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
+    .head-inner{max-width:1250px;margin:auto;padding:12px 22px;display:flex;align-items:center;gap:24px}.head-links{display:flex;gap:17px;font-size:.86rem}.head-links a{text-decoration:none}.head-links a:hover{color:var(--gold)}
+    .hero{min-height:640px;display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:60px;padding-top:78px;padding-bottom:90px;perspective:1100px}
+    .hero h1{font-size:clamp(2.8rem,5vw,5rem);line-height:1.08;max-width:760px}.hero-art{position:relative;transform-style:preserve-3d;transition:transform .35s ease}
+    .hero-art:before{content:"";position:absolute;inset:8% -5% -6% 6%;border:1px solid #a99570;border-radius:46% 46% 9% 9%;transform:translateZ(-32px);box-shadow:0 34px 60px #443d3428}
+    .portrait{position:relative;aspect-ratio:4/5;max-height:560px;overflow:hidden;border-radius:46% 46% 9% 9%;background:#e5ddd0;box-shadow:0 25px 65px #4b413027;transform:translateZ(25px)}
+    .portrait img{width:100%;height:100%;object-fit:cover;object-position:center top}
+    .portrait:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,#ffffff35 48%,transparent 58%);transform:translateX(-130%);animation:lightSweep 8s 1.5s infinite}
+    @keyframes lightSweep{45%,100%{transform:translateX(130%)}}
+    .floating-note{position:absolute;bottom:-18px;left:-24px;z-index:2;transform:translateZ(60px)}
+    .depth-card{position:relative;transform-style:preserve-3d;transition:transform .28s,box-shadow .28s;overflow:hidden}
+    .depth-card:hover{transform:translateY(-6px) rotateX(2deg);box-shadow:0 25px 55px #343b3022}
+    .depth-card:before{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,transparent,#a88a56,#216552,transparent);background-size:200%;animation:edge 7s linear infinite}
+    @keyframes edge{to{background-position:200% 0}}
+    .timeline{display:flex;overflow:auto;gap:16px;scroll-snap-type:x mandatory;padding:12px 3px 27px}.timeline details{min-width:245px;flex:1;scroll-snap-align:start}.timeline summary{cursor:pointer}
+    .stage{display:grid;grid-template-columns:1.5fr .8fr;gap:40px;align-items:center}.universe{position:relative;aspect-ratio:1.3;min-height:425px;perspective:850px;transform:rotateX(5deg)}
+    .orbit{position:absolute;left:50%;top:50%;width:77%;height:80%;border:1px solid #aa997a88;border-radius:50%;transform:translate(-50%,-50%) rotate(-20deg)}
+    .orbit.second{width:97%;height:58%;transform:translate(-50%,-50%) rotate(27deg);border-style:dashed;opacity:.5}
+    .core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:165px;height:165px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 30% 20%,white,#e7d9b8);box-shadow:0 0 0 25px #ddcba625,0 25px 55px #6a57342a;font-family:Fraunces,serif;color:#413827}
+    .node{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);width:112px;height:112px;border-radius:50%;background:radial-gradient(circle at 30% 20%,white,#f3efe5);border:1px solid #c7bea9;box-shadow:0 12px 24px #34443b1b;padding:10px;font-size:.83rem;font-weight:700;line-height:1.3;transition:transform .25s,box-shadow .25s}
+    .node:hover,.node[aria-pressed=true],.node:focus-visible{transform:translate(-50%,-50%) scale(1.13);box-shadow:0 0 0 8px #d6b77830,0 18px 36px #34443b33}
+    .skill-grid{display:none}.modal-back{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:16px;background:#25302ac9;animation:appear .2s ease}
+    @keyframes appear{from{opacity:0}to{opacity:1}}.modal-box{width:min(100%,860px);max-height:calc(90 * min(var(--vh, 1vh), 1vh));overflow:auto;background:var(--paper);border-radius:24px;padding:25px;box-shadow:0 30px 100px #101b1980}
+    .modal-top{display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px}
+    .admin-layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:24px}.admin-nav{max-height:650px;overflow:auto}.admin-nav button{display:block;width:100%;text-align:left;padding:9px 12px;border-radius:9px}.admin-nav button.active,.admin-nav button:hover{background:#eee7da}
+    .tag{display:inline-block;border-radius:100px;padding:3px 10px;background:#eee8dc;color:#695032;font-size:.76rem;font-weight:700}
+    .item-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:17px}.item-grid article{min-width:0}
+    .admin-row{border:1px solid var(--line);border-radius:14px;padding:13px;margin:10px 0;background:white}
+    .block-row{display:flex;flex-wrap:wrap;align-items:center;gap:7px;padding:10px;border:1px solid var(--line);border-radius:12px;margin:8px 0}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}.reveal.visible{opacity:1;transform:none}
+    #progress,#read-progress{position:fixed;top:0;left:0;z-index:120;height:3px;width:0;background:var(--gold);pointer-events:none}
+    #toast{position:fixed;z-index:130;right:16px;bottom:16px;max-width:min(90vw,420px)}
+    .empty{padding:38px;border:1px dashed #c8bdaa;border-radius:20px;text-align:center;background:#fffefa}
+    .media-photo{width:100%;height:270px;object-fit:cover;border-radius:14px;background:#ece9e0}
+    .pdf-frame{width:100%;height:calc(65 * min(var(--vh, 1vh), 1vh));border:1px solid var(--line);border-radius:12px;background:#eee}
+    @media(max-width:950px){.head-links{display:none}.hero{gap:35px}.stage{display:block}.universe{display:none}.skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}.skill-grid .node{position:static;transform:none!important;width:100%;height:auto;min-height:63px;border-radius:14px}.admin-layout{grid-template-columns:1fr}.admin-nav{display:flex;overflow:auto;max-height:none;gap:5px}.admin-nav button{white-space:nowrap;width:auto}}
+    @media(max-width:650px){.wrap{padding:65px 20px}.hero{display:flex;flex-direction:column-reverse;align-items:stretch;padding-top:30px;gap:50px}.hero-art{width:min(85%,370px);margin:auto}.hero h1{font-size:2.85rem}.floating-note{left:-12px;padding:10px 14px!important}.timeline{display:block;border-left:1px solid #c5ab80;padding-left:16px}.timeline details{margin-bottom:12px}.modal-back{padding:0}.modal-box{width:100%;height:calc(100 * min(var(--vh, 1vh), 1vh));max-height:none;border-radius:0;padding:18px}.admin-nav{margin:0 -20px;padding:0 20px}.desktop-only{display:none}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+  </style>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="/_sdk/6739934784996595.data_sdk.js" type="text/javascript" integrity="sha512-aHih8MxSNczT9xRyOUq01Vmx230URMZj+8SR3fa6IZ4ScQSlODcJ0UFHLNv4yeUNpouT9N1Dq//VhTGgYsIH3g=="></script>
+  <script src="/_sdk/f35087cf86290a33.editing_sdk.js" type="text/javascript" integrity="sha512-0mbfNVTwbL0jObU6oAxxR5ze1N+oYmbuEj9U1b4T49vSBeEkZoZHWPh6ZDT5m6/VH3g3YGCJo2G9/z6qkXc02w=="></script>
+  <script src="/_sdk/056c9619db603d29.resizing_sdk.js" type="text/javascript" integrity="sha512-M+H3L4m9QQRx/o9ibl2pgmK12j+m7IzyXqQYPu51UsEwWvMSULNPd1Mc6Ou1S2PXfxZHFCe8Axqt+diUPCpRiw=="></script>
+ </head>
+ <body data-template-id="__page-root" class="w-full" style="background: rgb(248, 247, 243);">
+  <div id="progress" aria-hidden="true"></div>
+  <div id="read-progress" hidden="" aria-hidden="true"></div>
+  <div id="site" class="shell">
+   <header class="site-head">
+    <nav class="head-inner" aria-label="Ana gezinme"><button id="brand" type="button" class="serif gold text-left text-2xl mr-auto" aria-label="BA; ana sayfaya dön">BA <span class="text-xs tracking-widest">BARBAROS AŞICI</span></button>
+     <div class="head-links">
+      <a href="#ana-sayfa">Ana Sayfa</a><a href="#hakkimda">Hakkımda</a><a href="#kariyer">Kariyer</a><a href="#uzmanlik">Uzmanlık</a><a href="#projeler">Projeler</a><a href="#medya">Medya</a><a href="#blog">Blog</a><a href="#iletisim">İletişim</a>
+     </div><span class="gold text-sm desktop-only">TR</span><button id="menu-toggle" class="pill min-[951px]:hidden" type="button" aria-expanded="false" aria-controls="mobile-nav">Menü</button>
+    </nav>
+    <nav id="mobile-nav" class="px-6 pb-5 flex flex-wrap gap-4 min-[951px]:hidden" hidden="" aria-label="Mobil gezinme">
+     <a href="#ana-sayfa">Ana Sayfa</a><a href="#hakkimda">Hakkımda</a><a href="#kariyer">Kariyer</a><a href="#uzmanlik">Uzmanlık</a><a href="#projeler">Projeler</a><a href="#medya">Medya</a><a href="#blog">Blog</a><a href="#iletisim">İletişim</a>
+    </nav>
+   </header>
+   <main>
+    <section id="ana-sayfa" class="wrap hero">
+     <div>
+      <p data-template-id="hero-eyebrow" class="canva-text eyebrow mb-6" style="color: rgb(128, 101, 61); font-weight: 400; font-style: normal; font-size: 16px;">SATIŞ YÖNETİMİ / İŞ GELİŞTİRME</p>
+      <h1 data-template-id="hero-title" class="canva-text serif mb-6" style="color: rgb(41, 45, 42); font-weight: 600; font-style: normal; font-size: 56px;">Deneyimden doğan stratejik bakış</h1>
+      <p data-template-id="hero-subtitle" class="canva-text gold font-semibold mb-4" style="color: rgb(128, 101, 61); font-weight: 400; font-style: normal; font-size: 16px;">Satış yönetimi · İş geliştirme · Araştırma ve analitik bakış</p>
+      <p data-template-id="hero-description" class="canva-text muted max-w-xl mb-8" style="color: rgb(73, 83, 77); font-weight: 400; font-style: normal; font-size: 16px;">İzmir merkezli kariyerimde satış kanalları, distribütörler, zincir marketler ve ekiplerle çalıştım. Ticari kararları araştırma, bütçe ve raporlamayla destekliyorum.</p>
+      <div class="flex flex-wrap gap-3"><a data-template-id="hero-about" class="canva-link btn primary" href="#hakkimda" style="background: rgb(128, 101, 61); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Hakkımda</a> <a data-template-id="hero-career" class="canva-link btn" href="#kariyer" style="background: rgb(255, 255, 255); color: rgb(41, 45, 42); font-weight: 400; font-style: normal; font-size: 16px;">Kariyerimi İncele</a> <a data-template-id="hero-contact" class="canva-link btn" href="#iletisim" style="background: rgb(255, 255, 255); color: rgb(41, 45, 42); font-weight: 400; font-style: normal; font-size: 16px;">İletişime Geç</a> <button data-template-id="cv-button" id="cv-open" class="canva-button btn" type="button" style="background: rgb(255, 255, 255); color: rgb(41, 45, 42); font-weight: 400; font-style: normal; font-size: 16px;">CV'Yİ GÖRÜNTÜLE</button>
+      </div>
+      <p data-template-id="hero-location" class="canva-text muted mt-9" style="color: rgb(73, 83, 77); font-weight: 400; font-style: normal; font-size: 16px;">İzmir, Türkiye</p>
+      <p data-template-id="hero-role" class="canva-text muted" style="color: rgb(73, 83, 77); font-weight: 400; font-style: normal; font-size: 16px;">Sanita Food Sterilisation · Satış Müdürü</p>
+     </div>
+     <div id="hero-art" class="hero-art">
+      <div class="portrait">
+       <img data-template-id="hero-portrait" class="canva-image" loading="lazy" src="canva://MAHXzVYIHFQ/1" alt="Barbaros Aşıcı, siyah smokin ve papyonla sıcak ışık altında">
+      </div>
+      <div class="floating-note glass rounded-2xl px-6 py-4">
+       <span class="eyebrow">İZMİR / TÜRKİYE</span>
+       <p class="serif text-xl">Strateji. İlişki. Büyüme.</p>
+      </div>
+     </div>
+    </section>
+    <div data-template-id="proof-strip" class="canva-banner border-y border-stone-200 text-center py-5 tracking-widest text-xs" style="color: rgb(128, 101, 61); font-weight: 400; font-style: normal; font-size: 16px;">Satış · İş Geliştirme · Stratejik İlişkiler</div>
+    <section id="hakkimda" class="wrap reveal">
+     <p class="eyebrow mb-4">01 / HAKKIMDA</p>
+     <h2 data-template-id="about-title" class="canva-text serif max-w-3xl mb-6" style="color: rgb(41, 45, 42); font-weight: 400; font-style: normal; font-size: 24px;">Ticari ilişkilerde deneyim ve analitik bakış</h2>
+     <p data-template-id="about-copy" class="canva-text muted max-w-3xl leading-8" style="color: rgb(73, 83, 77); font-weight: 400; font-style: normal; font-size: 16px;">Satış ve iş geliştirme deneyimim; distribütör ilişkileri, ulusal ve yerel zincir marketler, ekip koordinasyonu, bütçe hazırlığı ve yönetim raporlamasını kapsıyor. Araştırmayı ve analitik değerlendirmeyi ticari yaklaşımımın parçası olarak görüyorum.</p>
+     <div class="grid sm:grid-cols-3 gap-4 mt-10">
+      <article class="glass depth-card rounded-2xl p-7">
+       <h3 class="serif text-2xl gold">Satış</h3>
+       <p class="muted mt-2">Kanal ve müşteri ilişkileri</p>
+      </article>
+      <article class="glass depth-card rounded-2xl p-7">
+       <h3 class="serif text-2xl gold">Araştırma</h3>
+       <p class="muted mt-2">İş geliştirme ve analitik bakış</p>
+      </article>
+      <article class="glass depth-card rounded-2xl p-7">
+       <h3 class="serif text-2xl gold">İzmir</h3>
+       <p class="muted mt-2">Türkiye merkezli çalışma</p>
+      </article>
+     </div>
+     <p class="muted text-sm mt-7">Eğitim: Akdeniz Üniversitesi, Burdur MYO — Elektrik (1984–1986). Almanca ve İngilizce: temel seviye.</p>
+    </section>
+    <section id="kariyer" class="wrap reveal">
+     <p class="eyebrow mb-4">02 / KARİYER</p>
+     <h2 class="serif text-4xl mb-5">Deneyimle şekillenen yolculuk</h2>
+     <p class="muted">Görev kapsamını görmek için bir dönemi açın.</p>
+     <div class="timeline">
+      <details class="glass rounded-2xl p-6" open="">
+       <summary><span class="eyebrow">2013 — GÜNÜMÜZ</span><h3 class="serif text-xl mt-3">Sanita Food Sterilisation</h3><p class="gold">Satış Müdürü</p></summary>
+       <p class="muted mt-5">İzmir merkezli satış yönetimi, araştırma ve iş geliştirme.</p>
+      </details>
+      <details class="glass rounded-2xl p-6">
+       <summary><span class="eyebrow">2013 — 2016</span><h3 class="serif text-xl mt-3">Sanita Food Sterilisation</h3><p class="gold">Endüstriyel Müşteri Uzmanı</p></summary>
+       <p class="muted mt-5">Eylül 2013 – Ocak 2016. Türkiye.</p>
+      </details>
+      <details class="glass rounded-2xl p-6">
+       <summary><span class="eyebrow">2012 — 2013</span><h3 class="serif text-xl mt-3">Dore Dış Tic. Ltd. Şti.</h3><p class="gold">Ulusal Satış Müdürü</p></summary>
+       <p class="muted mt-5">Toptan satış, mağaza koordinasyonu ve ticari ilişkiler.</p>
+      </details>
+      <details class="glass rounded-2xl p-6">
+       <summary><span class="eyebrow">2000 — 2005</span><h3 class="serif text-xl mt-3">Tukaş Gıda</h3><p class="gold">Kilit Müşteri Yöneticisi</p></summary>
+       <p class="muted mt-5">Zincir marketler, sözleşmeler, bütçe ve yönetim raporlaması.</p>
+      </details>
+      <details class="glass rounded-2xl p-6">
+       <summary><span class="eyebrow">1991 — 1995</span><h3 class="serif text-xl mt-3">R.J. Reynolds Tobacco</h3><p class="gold">Satış Süpervizörü</p></summary>
+       <p class="muted mt-5">Distribütör, rota, ekip ve bölgesel satış raporlaması.</p>
+      </details>
+     </div>
+    </section>
+    <section id="uzmanlik" class="wrap reveal">
+     <p class="eyebrow mb-4">03 / UZMANLIK</p>
+     <h2 data-template-id="expertise-title" class="canva-text serif max-w-4xl mb-5" style="color: rgb(41, 45, 42); font-weight: 600; font-style: normal; font-size: 24px;">Deneyimden doğan uzmanlık, ilişkiyi sürdürülebilir değere dönüştürür.</h2>
+     <p data-template-id="expertise-intro" class="canva-text muted max-w-3xl mb-10" style="color: rgb(73, 83, 77); font-weight: 400; font-style: normal; font-size: 16px;">Satış yönetimi ve iş geliştirme deneyimi; araştırma, analitik değerlendirme, distribütör ve zincir market ilişkileri, ekip koordinasyonu, bütçe ve raporlamayla birlikte şekillenir.</p>
+     <div class="stage">
+      <div>
+       <div class="universe" aria-label="Uzmanlık alanları">
+        <div class="orbit"></div>
+        <div class="orbit second"></div>
+        <div class="core">
+         UZMANLIK
+        </div><button class="node" style="--x:16%;--y:17%" data-skill="0" type="button">Liderlik</button><button class="node" style="--x:46%;--y:10%" data-skill="1" type="button">Satış Yönetimi</button><button class="node" style="--x:81%;--y:19%" data-skill="2" type="button">İş Geliştirme</button><button class="node" style="--x:89%;--y:49%" data-skill="3" type="button">Araştırma</button><button class="node" style="--x:79%;--y:82%" data-skill="4" type="button">Analitik Beceriler</button><button class="node" style="--x:49%;--y:92%" data-skill="5" type="button">Distribütör Yönetimi</button><button class="node" style="--x:19%;--y:81%" data-skill="6" type="button">Zincir Marketler</button><button class="node" style="--x:9%;--y:48%" data-skill="7" type="button">Bütçe ve Raporlama</button>
+       </div>
+       <div class="skill-grid" aria-label="Uzmanlık alanları">
+        <button class="node" data-skill="0" type="button">Liderlik</button><button class="node" data-skill="1" type="button">Satış Yönetimi</button><button class="node" data-skill="2" type="button">İş Geliştirme</button><button class="node" data-skill="3" type="button">Araştırma</button><button class="node" data-skill="4" type="button">Analitik Beceriler</button><button class="node" data-skill="5" type="button">Distribütör Yönetimi</button><button class="node" data-skill="6" type="button">Zincir Marketler</button><button class="node" data-skill="7" type="button">Bütçe ve Raporlama</button>
+       </div>
+      </div>
+      <aside class="glass rounded-3xl p-8 min-h-52" aria-live="polite">
+       <p class="eyebrow mb-5">ODAK ALANI</p>
+       <h3 id="skill-title" class="serif text-2xl mb-3"></h3>
+       <p id="skill-copy" class="muted"></p>
+      </aside>
+     </div>
+    </section>
+    <section class="wrap reveal">
+     <p class="eyebrow mb-4">04 / YAKLAŞIM</p>
+     <h2 class="serif text-4xl mb-8">İlişkiden sürdürülebilir değere</h2>
+     <div class="item-grid">
+      <article class="glass depth-card rounded-2xl p-7">
+       <span class="gold">01</span>
+       <h3 class="serif text-xl my-3">Dinle</h3>
+       <p class="muted">İhtiyacı, kanalı ve koşulları anlamak.</p>
+      </article>
+      <article class="glass depth-card rounded-2xl p-7">
+       <span class="gold">02</span>
+       <h3 class="serif text-xl my-3">Strateji Kur</h3>
+       <p class="muted">Araştırma ve analitik bakışla ilerlemek.</p>
+      </article>
+      <article class="glass depth-card rounded-2xl p-7">
+       <span class="gold">03</span>
+       <h3 class="serif text-xl my-3">Değer Üret</h3>
+       <p class="muted">İlişkileri ekip çalışmasıyla desteklemek.</p>
+      </article>
+     </div>
+    </section>
+    <section id="projeler" class="wrap reveal">
+     <p class="eyebrow mb-4">05 / PROJELER</p>
+     <h2 class="serif text-4xl mb-3">Yaklaşım alanları</h2>
+     <p class="muted mb-8">Bunlar doğrulanmış proje sonuçları değil, özgeçmişteki görev kapsamının özetidir.</p>
+     <div class="item-grid">
+      <article class="glass depth-card rounded-2xl p-7">
+       <span class="tag">GÖREV ALANI</span>
+       <h3 class="serif text-xl my-4">Satış kanalı geliştirme</h3>
+       <p class="muted">Mağaza ilişkileri ve ticari anlaşmalar.</p>
+      </article>
+      <article class="glass depth-card rounded-2xl p-7">
+       <span class="tag">GÖREV ALANI</span>
+       <h3 class="serif text-xl my-4">Distribütör ve zincir marketler</h3>
+       <p class="muted">Bölgesel ve ulusal kanal ilişkileri.</p>
+      </article>
+      <article class="glass depth-card rounded-2xl p-7">
+       <span class="tag">GÖREV ALANI</span>
+       <h3 class="serif text-xl my-4">Bütçe, ekip ve raporlama</h3>
+       <p class="muted">Koordinasyon ve yönetim raporları.</p>
+      </article>
+     </div>
+    </section>
+    <section id="medya" class="wrap reveal">
+     <p class="eyebrow mb-4">06 / MEDYA MERKEZİ</p>
+     <h2 class="serif text-4xl mb-4">Görsel arşiv</h2>
+     <p class="muted mb-7">Yalnızca sağlanan portre başlangıç medyasıdır. Eklenen öğeler demo prototip içeriğidir.</p>
+     <div class="flex flex-wrap gap-2 mb-5" role="group" aria-label="Medya filtreleri">
+      <button class="pill media-filter" data-type="Tümü" aria-pressed="true">Tümü</button><button class="pill media-filter" data-type="Fotoğraf" aria-pressed="false">Fotoğraf</button><button class="pill media-filter" data-type="Video" aria-pressed="false">Video</button>
+     </div><label class="field-label" for="media-category">Kategori</label><select id="media-category" class="field max-w-xs mb-6"><option>Tümü</option><option>Portre</option><option>Diğer</option></select>
+     <div id="media-grid" class="item-grid"></div>
+     <p id="media-empty" class="empty" hidden="">Bu filtreye uygun medya henüz yok.</p>
+    </section>
+    <section id="blog" class="wrap reveal">
+     <p class="eyebrow mb-4">07 / BLOG</p>
+     <h2 class="serif text-4xl mb-4">Notlar &amp; perspektifler</h2>
+     <p class="muted mb-7">Yönetim alanındaki yazılar bir demo prototipidir; gerçek yayın değildir.</p>
+     <div id="featured" hidden="" class="glass depth-card rounded-3xl p-7 mb-6"></div>
+     <div class="flex flex-wrap gap-3 mb-5">
+      <div>
+       <label class="field-label" for="blog-search">Yazılarda ara</label><input id="blog-search" class="field" placeholder="Başlık veya özet">
+      </div>
+      <div>
+       <label class="field-label" for="blog-category">Kategori</label><select id="blog-category" class="field"><option>Tümü</option></select>
+      </div>
+      <div>
+       <label class="field-label" for="blog-tag">Etiket</label><select id="blog-tag" class="field"><option>Tümü</option></select>
+      </div>
+     </div>
+     <div id="blog-grid" class="item-grid"></div>
+     <p id="blog-empty" class="empty" aria-live="polite">İlk yazılar yakında.</p>
+    </section>
+    <section id="iletisim" class="wrap reveal">
+     <p class="eyebrow mb-4">08 / İLETİŞİM</p>
+     <h2 class="serif text-4xl mb-6">Bir konuşmayla başlayalım.</h2>
+     <div class="grid lg:grid-cols-2 gap-10">
+      <div>
+       <p class="muted mb-6">Mesajınız Canva Sheet içine kaydedilir. Göndericiler geçmiş mesajları görüntüleyemez.</p><a class="btn" href="https://www.linkedin.com/in/barbarosasici" target="_blank" rel="noopener noreferrer">LinkedIn profilini aç ↗</a>
+       <p class="muted mt-7">İzmir, Türkiye · Doğrudan telefon veya e-posta adresi paylaşılmamıştır.</p>
+      </div>
+      <form id="contact-form" class="glass rounded-3xl p-6 sm:p-8" novalidate=""><label data-template-id="name-label" class="canva-text field-label" for="full-name" style="color: rgb(41, 45, 42); font-weight: 400; font-style: normal; font-size: 16px;">Ad Soyad</label><input id="full-name" class="field" autocomplete="name" required="">
+       <p id="name-error" class="error"></p><label data-template-id="email-label" class="canva-text field-label" for="email" style="color: rgb(41, 45, 42); font-weight: 400; font-style: normal; font-size: 16px;">E-posta</label><input id="email" type="email" class="field" autocomplete="email" required="">
+       <p id="email-error" class="error"></p><label data-template-id="subject-label" class="canva-text field-label" for="subject" style="color: rgb(41, 45, 42); font-weight: 400; font-style: normal; font-size: 16px;">Konu</label><input id="subject" class="field" required="">
+       <p id="subject-error" class="error"></p><label data-template-id="message-label" class="canva-text field-label" for="message" style="color: rgb(41, 45, 42); font-weight: 400; font-style: normal; font-size: 16px;">Mesaj</label><textarea id="message" class="field min-h-32" required=""></textarea>
+       <p id="message-error" class="error"></p><label class="flex gap-3 items-start mt-3" for="consent"><input id="consent" type="checkbox" class="mt-1"><span data-template-id="consent-label" class="canva-text" style="color: rgb(41, 45, 42); font-weight: 400; font-style: normal; font-size: 16px;">Kişisel verilerimin iletişim amacıyla işlenmesini kabul ediyorum.</span></label>
+       <p id="consent-error" class="error"></p><button data-template-id="send-button" id="send-button" class="canva-button btn primary w-full mt-4" type="submit" style="background: rgb(128, 101, 61); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Mesaj Gönder</button>
+       <p id="form-status" role="status" class="muted text-sm mt-3"></p>
+      </form>
+     </div>
+    </section>
+   </main>
+   <footer class="border-t border-stone-200 p-10">
+    <div class="max-w-[1200px] mx-auto flex flex-wrap justify-between gap-6">
+     <p class="muted"><span class="serif gold text-3xl">BA</span><br>
+      Barbaros Aşıcı · İzmir, Türkiye<br>
+      Satış yönetimi ve iş geliştirme.</p>
+     <nav class="flex flex-wrap gap-5" aria-label="Alt gezinme">
+      <a href="#hakkimda">Hakkımda</a><a href="#kariyer">Kariyer</a><a href="#medya">Medya</a><a href="#blog">Blog</a><a href="#iletisim">İletişim</a><button type="button" id="privacy-open">Gizlilik</button>
+     </nav>
+    </div>
+   </footer>
+  </div>
+  <div id="admin" class="w-full min-h-screen" hidden="">
+   <header class="max-w-[1200px] mx-auto px-5 py-8 flex flex-wrap justify-between items-center gap-4">
+    <div>
+     <p class="eyebrow">BA / YÖNETİM ALANI</p>
+     <h1 class="serif text-3xl">İçerik çalışma alanı <span class="tag">Demo prototip</span></h1>
+    </div><button id="admin-close" class="btn" type="button">← Siteye Dön</button>
+   </header>
+   <main class="max-w-[1200px] mx-auto px-5 pb-16">
+    <p class="glass rounded-xl p-4 mb-6 text-sm">Bu panelde kimlik doğrulama veya gerçek CMS yayını yoktur. Blog ve medya değişiklikleri geçici demo durumudur; üretim için sunucu bağlantısı gerekir.</p>
+    <div class="admin-layout">
+     <aside class="glass rounded-2xl p-3 self-start">
+      <h2 class="eyebrow px-3 mb-2">MODÜLLER</h2>
+      <nav id="admin-nav" class="admin-nav" aria-label="Yönetim modülleri"></nav>
+     </aside>
+     <section class="glass rounded-3xl p-5 sm:p-8 min-h-80">
+      <div class="flex flex-wrap justify-between gap-3 items-center mb-5">
+       <div>
+        <p class="eyebrow">DEMO PROTOTİP</p>
+        <h2 id="admin-heading" class="serif text-3xl"></h2>
+       </div><span class="tag">Oturumluk önizleme</span>
+      </div>
+      <div id="admin-content"></div>
+     </section>
+    </div>
+   </main>
+  </div>
+  <div id="modal" class="modal-back" hidden="">
+   <div id="modal-box" class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-top">
+     <h2 id="modal-title" class="serif text-2xl"></h2><button id="modal-close" class="pill" type="button">Kapat ✕</button>
+    </div>
+    <div id="modal-body"></div>
+   </div>
+  </div>
+  <div id="toast" class="glass rounded-xl px-5 py-4" role="status" hidden=""></div>
+  <script>
+  (() => {
+    const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+    const el = (tag, text, cls = '') => { const n = document.createElement(tag); n.className = cls; if (text != null) n.textContent = text; return n; };
+    const btn = (text, fn, cls = 'btn') => { const n = el('button', text, cls); n.type = 'button'; n.addEventListener('click', fn); return n; };
+    const field = (label, value = '', type = 'text') => {
+      const wrap = el('div'); const id = 'f-' + Math.random().toString(36).slice(2);
+      const l = el('label', label, 'field-label'); l.htmlFor = id;
+      const input = type === 'textarea' ? document.createElement('textarea') : document.createElement('input');
+      input.id = id; input.className = 'field'; if (type !== 'textarea') input.type = type; input.value = value;
+      wrap.append(l, input); return {wrap, input};
+    };
+    const state = {posts:[], media:[{id:'portrait',title:'Barbaros Aşıcı portresi',type:'Fotoğraf',category:'Portre',tags:'Portre',alt:'Barbaros Aşıcı, siyah smokin ve papyonla sıcak ışık altında',real:true,visible:true}], galleries:[], categories:['Liderlik','İş Geliştirme','Satış'], tags:[], current:'Anasayfa'};
+    const modules = ['Anasayfa','Hakkımda','Kariyer','Projeler','Blog Yönetimi','Video Yönetimi','Fotoğraf Yönetimi','Referans','Basın','İletişim Formları','SEO','Kullanıcı','Medya Kütüphanesi','Dil','Analitik','Sayfa Oluşturucu','Sürükle Bırak İçerik Yönetimi','AI İçerik Yardımcısı','Video Yükleme','PDF Yükleme','Galeri Yönetimi'];
+    const skills = [
+      ['Liderlik','Ekipleri ortak ticari hedefler etrafında koordine etme.'],['Satış Yönetimi','Satış faaliyetlerini ve kanal ilişkilerini yönetme.'],['İş Geliştirme','Yeni ilişkileri araştırma ve ticari olanakları değerlendirme.'],['Araştırma','Kararları bilgi ve pazar gözlemleriyle destekleme.'],['Analitik Beceriler','Bütçe, hedef ve raporları analitik bakışla ele alma.'],['Distribütör Yönetimi','Bölgesel distribütör ilişkilerini ve uygulamaları izleme.'],['Zincir Marketler','Ulusal ve yerel market zincirleriyle ticari süreçler.'],['Bütçe ve Raporlama','Dönemsel bütçe hazırlığı ve yönetim raporlaması.']
+    ];
+    let toastTimer, lastFocus, modalCloseAction = null, activeType = 'Tümü', postFilter = 'Tümü', editingPost = null, blocks = [], pdfPage = 1, pdfZoom = 100;
+    // Ek metaveride PDF eki var ancak erişilebilir PDF URL'si yok; sahte yol oluşturulmaz.
+    const pdfUrl = null, pdfName = 'BARBAROS AŞICI — özgeçmiş (2 sayfa).pdf';
+    function notify(message){$('#toast').textContent=message;$('#toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').hidden=true,3800)}
+    function clear(node){node.replaceChildren()}
+    function openModal(title, build, onClose){lastFocus=document.activeElement;modalCloseAction=onClose||null;$('#modal-title').textContent=title;clear($('#modal-body'));build($('#modal-body'));$('#modal').hidden=false;document.body.style.overflow='hidden';$('#modal-close').focus()}
+    function closeModal(){if($('#modal').hidden)return;$('#modal').hidden=true;document.body.style.overflow='';$('#read-progress').hidden=true;modalCloseAction?.();modalCloseAction=null;lastFocus?.focus()}
+    $('#modal-close').onclick=closeModal;$('#modal').onclick=e=>{if(e.target===$('#modal'))closeModal()};
+    document.addEventListener('keydown',e=>{
+      if($('#modal').hidden)return;
+      if(e.key==='Escape'){closeModal();return}
+      if(e.key==='Tab'){const focusable=$$('#modal button:not(:disabled),#modal input:not(:disabled),#modal select:not(:disabled),#modal textarea:not(:disabled),#modal a[href]');const first=focusable[0],last=focusable.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}
+      if(e.key==='ArrowLeft'||e.key==='ArrowRight'){const action=$('#modal-body').querySelector(e.key==='ArrowLeft'?'[data-prev]':'[data-next]');if(action&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName))action.click()}
+    });
+    $('#privacy-open').onclick=()=>openModal('Gizlilik',root=>root.append(el('p','İletişim formuna gönderilen bilgiler Canva Sheet içine kaydedilir. Göndericiler geçmiş kayıtları görüntüleyemez. Blog ve medya yönetimi yalnızca geçici demo prototiptir.','muted')));
+    $('#menu-toggle').onclick=()=>{const show=$('#mobile-nav').hidden;$('#mobile-nav').hidden=!show;$('#menu-toggle').setAttribute('aria-expanded',String(show))};
+    $$('#mobile-nav a').forEach(a=>a.onclick=()=>{$('#mobile-nav').hidden=true;$('#menu-toggle').setAttribute('aria-expanded','false')});
+    $$('.node').forEach(n=>{const select=()=>{const i=Number(n.dataset.skill);$$('.node').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.skill===n.dataset.skill)));$('#skill-title').textContent=skills[i][0];$('#skill-copy').textContent=skills[i][1]};n.onclick=select;n.onfocus=select;n.onpointerenter=()=>{if(matchMedia('(hover:hover)').matches)select()}});
+    $('.node').click();
+    if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.08});$$('.reveal').forEach(n=>observer.observe(n))}else $$('.reveal').forEach(n=>n.classList.add('visible'));
+    let raf=0;
+    addEventListener('scroll',()=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;const d=document.documentElement;$('#progress').style.width=(d.scrollTop/Math.max(1,d.scrollHeight-d.clientHeight)*100)+'%'})},{passive:true});
+    if(matchMedia('(hover:hover) and (min-width:951px) and (prefers-reduced-motion:no-preference)').matches){const art=$('#hero-art');let pending=0;art.addEventListener('pointermove',e=>{if(pending)return;pending=requestAnimationFrame(()=>{const r=art.getBoundingClientRect();art.style.transform=`rotateY(${((e.clientX-r.left)/r.width-.5)*9}deg) rotateX(${(.5-(e.clientY-r.top)/r.height)*9}deg)`;pending=0})});art.addEventListener('pointerleave',()=>art.style.transform='')}
+    function pdfUI(root){
+      const info=el('p','İki sayfalık kaynak PDF','eyebrow mb-4');root.append(info);
+      if(!pdfUrl){const box=el('div',null,'empty');box.append(el('h3','PDF önizlemesi kullanılamıyor','serif text-xl mb-2'),el('p','Ekli dosya için bu sayfada erişilebilir bir PDF adresi bulunmuyor. Kaynak belge yeniden üretilmez.','muted'),el('p',pdfName,'gold mt-4'));root.append(box);return}
+      const tools=el('div',null,'flex flex-wrap gap-2 mb-4'),frame=document.createElement('iframe'),count=el('span',null,'pill');
+      frame.className='pdf-frame';frame.title='Barbaros Aşıcı özgeçmiş PDF önizlemesi';
+      const update=()=>{count.textContent=`Sayfa ${pdfPage} / 2 · %${pdfZoom}`;frame.src=pdfUrl+'#page='+pdfPage+'&zoom='+pdfZoom};
+      tools.append(btn('← Önceki',()=>{pdfPage=Math.max(1,pdfPage-1);update()}),count,btn('Sonraki →',()=>{pdfPage=Math.min(2,pdfPage+1);update()}),btn('−',()=>{pdfZoom=Math.max(50,pdfZoom-25);update()}),btn('+',()=>{pdfZoom=Math.min(200,pdfZoom+25);update()}),btn('Tam ekran',()=>{$('#modal-box').requestFullscreen?.().catch(()=>notify('Tam ekran açılamadı.'))}));
+      const link=el('a','PDF’yi yeni sekmede aç','btn');link.href=pdfUrl;link.target='_blank';link.rel='noopener noreferrer';tools.append(link);
+      frame.onerror=()=>{frame.hidden=true;root.append(el('p',pdfName+' yüklenemedi. PDF’yi yeni sekmede açmayı deneyin.','error'))};
+      root.append(tools,frame);update();
     }
+    $('#cv-open').onclick=()=>openModal('Özgeçmiş önizlemesi',pdfUI);
 
-    satir.style.display=goster ? "" : "none";
-
-    if(goster){
-
-        genelAlis += Number(satir.cells[5].innerText);
-        genelSatis += Number(satir.cells[6].innerText);
-        genelOdeme += Number(satir.cells[9].innerText);
-        genelKalan += Number(satir.cells[10].innerText);
-        genelKar += Number(satir.cells[11].innerText);
-
+    function renderMedia(){
+      const grid=$('#media-grid');clear(grid);
+      const category=$('#media-category').value;
+      const items=state.media.filter(m=>m.visible&&(activeType==='Tümü'||m.type===activeType)&&(category==='Tümü'||m.category===category));
+      $('#media-empty').hidden=items.length>0;
+      items.forEach(m=>{const card=el('article',null,'glass depth-card rounded-2xl p-3');const image=el('div',null,'overflow-hidden rounded-xl bg-stone-100');
+        if(m.real){const img=document.createElement('img');img.setAttribute('data-template-id','gallery-portrait');img.className='canva-image media-photo';img.loading='lazy';image.append(img)}
+        else if(m.url&&m.type==='Fotoğraf'){const img=document.createElement('img');img.src=m.url;img.alt=m.alt||m.title;img.loading='lazy';img.className='media-photo';img.onerror=()=>{image.replaceChildren(el('p','Görsel yüklenemedi.','empty'))};image.append(img)}
+        else image.append(el('div',m.type==='Video'?'▶ Video önizlemesi · Demo prototip':'Görsel eklenmedi','empty'));
+        card.append(image,el('h3',m.title,'serif text-xl mt-3'),el('p',m.category+' · '+m.type,'muted text-sm'));
+        card.append(btn('Büyük görüntüle',()=>openMedia(m), 'btn mt-3'));grid.append(card)
+      })
     }
+    function openMedia(item){const visible=state.media.filter(m=>m.visible);let index=visible.findIndex(m=>m.id===item.id);
+      const show=root=>{clear(root);const m=visible[index];root.append(el('p',m.alt||m.title,'muted mb-3'));
+        if(m.real){const img=document.createElement('img');img.setAttribute('data-template-id','lightbox-portrait');img.className='canva-image max-h-[65vh] w-full object-contain rounded-xl';img.loading='lazy';root.append(img)}
+        else if(m.type==='Fotoğraf'&&m.url){const img=document.createElement('img');img.src=m.url;img.alt=m.alt||m.title;img.className='max-h-[65vh] w-full object-contain';img.onerror=()=>img.replaceWith(el('p','Görsel yüklenemedi.','empty'));root.append(img)}
+        else root.append(el('p','Video barındırma bağlantısı bulunmuyor. Üretim için video servisi gerekir.','empty'));
+        const controls=el('div',null,'flex flex-wrap gap-3 mt-4');
+        const prev=btn('← Önceki',()=>{index=(index-1+visible.length)%visible.length;show(root)});prev.dataset.prev='';
+        const next=btn('Sonraki →',()=>{index=(index+1)%visible.length;show(root)});next.dataset.next='';
+        controls.append(prev,el('span',`${index+1} / ${visible.length}`,'pill'),next);root.append(controls)
+      };
+      openModal(item.title,show)
+    }
+    $$('.media-filter').forEach(n=>n.onclick=()=>{activeType=n.dataset.type;$$('.media-filter').forEach(x=>x.setAttribute('aria-pressed',String(x===n)));renderMedia()});
+    $('#media-category').onchange=renderMedia;renderMedia();
 
-});
+    function renderBlog(){
+      const cat=$('#blog-category'),tag=$('#blog-tag'),oldCat=cat.value,oldTag=tag.value;
+      cat.replaceChildren(el('option','Tümü'));[...new Set([...state.categories,...state.posts.map(p=>p.category).filter(Boolean)])].forEach(v=>cat.append(el('option',v)));
+      tag.replaceChildren(el('option','Tümü'));[...new Set([...state.tags,...state.posts.flatMap(p=>p.tags.split(',').map(x=>x.trim()).filter(Boolean))])].forEach(v=>tag.append(el('option',v)));
+      cat.value=[...cat.options].some(x=>x.value===oldCat)?oldCat:'Tümü';tag.value=[...tag.options].some(x=>x.value===oldTag)?oldTag:'Tümü';
+      const query=$('#blog-search').value.trim().toLocaleLowerCase('tr');
+      const posts=state.posts.filter(p=>p.status==='Yayında'&&(cat.value==='Tümü'||p.category===cat.value)&&(tag.value==='Tümü'||p.tags.split(',').map(x=>x.trim()).includes(tag.value))&&(!query||(p.title+' '+p.summary).toLocaleLowerCase('tr').includes(query)));
+      const grid=$('#blog-grid');clear(grid);$('#blog-empty').hidden=posts.length>0;$('#blog-empty').textContent=state.posts.some(p=>p.status==='Yayında')?'Aramanızla eşleşen yazı bulunamadı.':'İlk yazılar yakında.';
+      const featured=posts.find(p=>p.featured);$('#featured').hidden=!featured;
+      if(featured){clear($('#featured'));$('#featured').append(el('span','ÖNE ÇIKAN · Örnek taslak','tag'),el('h3',featured.title,'serif text-2xl mt-3'),el('p',featured.summary,'muted my-3'),btn('Yazıyı oku →',()=>readPost(featured)))}
+      posts.forEach(p=>{const card=el('article',null,'glass depth-card rounded-2xl p-6');card.append(el('span','Örnek taslak · '+p.category,'tag'),el('h3',p.title,'serif text-xl mt-4'),el('p',p.summary,'muted mt-2'),el('p',p.date||'Tarih belirtilmedi','gold text-sm mt-3'),btn('Detayı oku →',()=>readPost(p),'btn mt-4'));grid.append(card)})
+    }
+    ['blog-search','blog-category','blog-tag'].forEach(id=>$('#'+id).addEventListener(id==='blog-search'?'input':'change',renderBlog));
+    function readPost(p){openModal(p.title,root=>{
+      $('#read-progress').hidden=false;root.append(el('p','Örnek taslak · '+p.category+' · '+(p.date||'Tarih belirtilmedi'),'eyebrow mb-3'),el('p',p.summary,'muted mb-6'));
+      const content=el('div',null,'space-y-4');p.blocks.forEach(b=>{
+        let node;if(b.type==='Başlık')node=el('h3',b.value,'serif text-2xl');
+        else if(b.type==='Alıntı')node=el('blockquote',b.value,'border-l-4 border-amber-700 pl-4 italic');
+        else if(b.type==='Madde listesi'){node=el('ul',null,'list-disc pl-6');b.value.split('\n').filter(Boolean).forEach(x=>node.append(el('li',x)))}
+        else if(b.type==='Ayırıcı')node=document.createElement('hr');
+        else if(b.type==='Buton'){node=el('span',b.value||'Buton','pill')}
+        else if(['Görsel','Video','Galeri'].includes(b.type))node=el('p',b.type+': '+(b.value||'Demo içerik'), 'empty');
+        else node=el('p',b.value,'leading-8');content.append(node)
+      });root.append(content,el('h3','İlgili içerikler','serif text-xl mt-8 mb-3'));
+      const related=state.posts.filter(x=>x.id!==p.id&&x.status==='Yayında'&&x.category===p.category).slice(0,2);
+      if(!related.length)root.append(el('p','İlgili yazı henüz yok.','muted'));
+      related.forEach(x=>root.append(btn(x.title,()=>{closeModal();readPost(x)},'btn mr-2 mb-2')))
+    },()=>$('#read-progress').style.width='0');
+      const box=$('#modal-box');box.onscroll=()=>{$('#read-progress').style.width=(box.scrollTop/Math.max(1,box.scrollHeight-box.clientHeight)*100)+'%'}
+    }
+    renderBlog();
 
-document.getElementById("toplamAlis").innerHTML=genelAlis.toFixed(2);
-document.getElementById("toplamSatis").innerHTML=genelSatis.toFixed(2);
-document.getElementById("toplamKar").innerHTML=genelKar.toFixed(2);
-document.getElementById("toplamOdeme").innerHTML=genelOdeme.toFixed(2);
-document.getElementById("toplamKalan").innerHTML=genelKalan.toFixed(2);
+    function adminNav(){const nav=$('#admin-nav');modules.forEach(name=>{const n=btn(name,()=>showModule(name),'');n.dataset.module=name;nav.append(n)})}
+    function showModule(name){state.current=name;$('#admin-heading').textContent=name;$$('#admin-nav button').forEach(n=>n.classList.toggle('active',n.dataset.module===name));const root=$('#admin-content');clear(root);
+      if(name==='Blog Yönetimi')return renderAdminBlog(root);
+      if(['Medya Kütüphanesi','Fotoğraf Yönetimi','Video Yönetimi','Video Yükleme'].includes(name))return renderAdminMedia(root,name);
+      if(name==='Galeri Yönetimi')return renderGalleries(root);
+      if(name==='PDF Yükleme'){root.append(el('p','Kaynak dosya · '+pdfName,'admin-row'),el('p','Ekli PDF’nin erişilebilir dosya bağlantısı yok. PDF önizlemesi veya indirme bağlantısı sunulmaz. Yükleme için üretim ortamında dosya servisi gerekir.','muted'));root.append(btn('CV durumunu görüntüle',()=>openModal('Özgeçmiş önizlemesi',pdfUI)));return}
+      if(name==='SEO')return renderSEO(root);
+      if(name==='İletişim Formları'){root.append(el('p','İletişim kayıtları Canva Sheet içinde tutulur. Gizlilik nedeniyle göndericilere ve bu yönetim prototipine geçmiş kayıtlar gösterilmez.','empty'));return}
+      if(name==='Anasayfa'){root.append(el('p','Barbaros Aşıcı · Satış Müdürü · Sanita Food Sterilisation · İzmir, Türkiye','admin-row'));root.append(btn('Site önizlemesine geç',()=>$('#admin-close').click()));return}
+      if(name==='Analitik'){root.append(el('p','Canlı ziyaretçi ölçümü bağlı değil. Üretim için analitik servisi gerekir.','empty'));return}
+      if(name==='Kullanıcı'){root.append(el('p','Bu gizli geçiş güvenlik sağlamaz. Gerçek kullanıcı ve yetki yönetimi için sunucu tarafı kimlik doğrulaması gerekir.','empty'));return}
+      if(name==='AI İçerik Yardımcısı'){root.append(el('p','AI hizmeti bağlı değil. Özgeçmiş dışında yeni kişi veya başarı iddiaları üretilemez.','empty'));return}
+      const note=el('p','Bu modül demo çalışma alanıdır. Değişiklikler yalnızca bu sayfa açıkken geçerlidir; gerçek yayın için sunucu bağlantısı gerekir.','muted mb-5');root.append(note);
+      const f=field('Demo içerik notu');root.append(f.wrap,btn('Taslak önizlemesini güncelle',()=>{if(!f.input.value.trim())return notify('Önce bir not yazın.');let preview=$('#demo-preview');if(!preview){preview=el('p',null,'admin-row mt-4');preview.id='demo-preview';root.append(preview)}preview.textContent=f.input.value.trim();notify('Demo taslak güncellendi.')},'btn primary mt-4'))
+    }
+    function renderAdminBlog(root){
+      const bar=el('div',null,'flex flex-wrap gap-2 mb-5');bar.append(btn('Yeni yazı oluştur',()=>postEditor(null),'btn primary'),btn('Kategorileri ve etiketleri yönet',taxonomy));root.append(bar);
+      const search=field('Yazı ara'),filter=field('Durum filtresi'),sort=field('Sıralama');
+      filter.input.replaceWith(...[]); // Alanlar aşağıda gerçek seçimlerle kurulur.
+      const select=(label,options)=>{const w=el('div');const l=el('label',label,'field-label');const s=el('select',null,'field');options.forEach(v=>s.append(el('option',v)));w.append(l,s);return {w,s}};
+      const status=select('Durum',['Tümü','Taslak','Yayında']),order=select('Sıralama',['Yeni → Eski','Eski → Yeni','Başlık A → Z']);
+      const controls=el('div',null,'grid sm:grid-cols-3 gap-3');controls.append(search.wrap,status.w,order.w);root.append(controls);
+      const list=el('div');root.append(list);
+      const paint=()=>{clear(list);let rows=state.posts.filter(p=>(status.s.value==='Tümü'||p.status===status.s.value)&&p.title.toLocaleLowerCase('tr').includes(search.input.value.toLocaleLowerCase('tr')));
+        rows=[...rows].sort((a,b)=>order.s.value==='Başlık A → Z'?a.title.localeCompare(b.title,'tr'):order.s.value==='Eski → Yeni'?a.created-b.created:b.created-a.created);
+        if(!rows.length){list.append(el('p','Bu ölçütlerde yazı yok. Yeni bir örnek taslak oluşturabilirsiniz.','empty mt-5'));return}
+        rows.forEach(p=>{const row=el('article',null,'admin-row');row.append(el('strong',p.title),el('p',`${p.category} · ${p.status} · Örnek taslak`,'muted text-sm'));
+          const actions=el('div',null,'flex flex-wrap gap-2 mt-3');
+          actions.append(btn('Düzenle',()=>postEditor(p)),btn('Önizle',()=>readPost(p)),btn(p.status==='Yayında'?'Yayından kaldır':'Yayınla',()=>{p.status=p.status==='Yayında'?'Taslak':'Yayında';notify('Demo yayın durumu güncellendi.');renderBlog();paint()}),btn('Sil',()=>confirmDelete('Yazı',()=>{state.posts=state.posts.filter(x=>x.id!==p.id);renderBlog();paint()})));
+          row.append(actions);list.append(row)})
+      };search.input.oninput=paint;status.s.onchange=paint;order.s.onchange=paint;paint()
+    }
+    function taxonomy(){openModal('Kategori ve etiket yönetimi',root=>{
+      const render=()=>{clear(root);[['Kategori',state.categories],['Etiket',state.tags]].forEach(([label,array])=>{
+        root.append(el('h3',label+'ler','serif text-xl mt-4'));const list=el('div',null,'flex flex-wrap gap-2 my-3');
+        array.forEach(value=>list.append(btn(value+' ×',()=>{if(state.posts.some(p=>label==='Kategori'?p.category===value:p.tags.split(',').map(s=>s.trim()).includes(value)))return notify('Önce yazılardaki kullanımı kaldırın.');array.splice(array.indexOf(value),1);render();renderBlog();notify(label+' silindi.')})));root.append(list);
+        const f=field('Yeni '+label.toLocaleLowerCase('tr'));root.append(f.wrap,btn('Ekle',()=>{const v=f.input.value.trim();if(!v)return notify('Boş değer eklenemez.');if(array.includes(v))return notify('Bu değer zaten var.');array.push(v);render();renderBlog();notify(label+' eklendi.')}))
+      })};render()
+    })}
+    function confirmDelete(label,done){openModal('Silme onayı',root=>{root.append(el('p',label+' silinsin mi? Bu işlem demo oturumunda geri alınamaz.','muted mb-5'),btn('Evet, sil',()=>{closeModal();done();notify(label+' silindi.')} ,'btn primary mr-2'),btn('Vazgeç',closeModal))})}
+    function postEditor(post){
+      editingPost=post;blocks=post?post.blocks.map(b=>({...b})):[];
+      openModal(post?'Yazıyı düzenle':'Yeni yazı · Demo prototip',root=>{
+        const form=el('form');form.noValidate=true;
+        const inputs={};[
+          ['title','Başlık',post?.title||''],['summary','Özet',post?.summary||''],['category','Kategori',post?.category||''],['tags','Etiketler (virgülle ayırın)',post?.tags||''],
+          ['cover','Kapak görseli URL’si (isteğe bağlı)',post?.cover||''],['images','İçerik görselleri URL’leri (virgülle)',post?.images||''],
+          ['video','Video URL’si (isteğe bağlı)',post?.video||''],['date','Yayın tarihi',post?.date||''],
+          ['seo','SEO başlığı',post?.seo||''],['meta','Meta açıklaması',post?.meta||''],['slug','URL alanı',post?.slug||'']
+        ].forEach(([key,label,value])=>{const f=field(label,value);inputs[key]=f.input;form.append(f.wrap)});
+        const featured=field('Öne çıkan yazı');const check=document.createElement('input');check.type='checkbox';check.checked=!!post?.featured;featured.input.replaceWith(check);form.append(featured.wrap);
+        form.append(el('h3','İçerik blokları','serif text-xl mt-6'),el('p','Blokları ekleyin ve oklarla sıralayın.','muted text-sm'));
+        const blockList=el('div');form.append(blockList);const renderBlocks=()=>{clear(blockList);blocks.forEach((b,i)=>{const row=el('div',null,'block-row');row.append(el('strong',b.type));if(b.type!=='Ayırıcı'){const input=document.createElement('textarea');input.className='field min-h-16';input.value=b.value;input.setAttribute('aria-label',b.type+' blok içeriği');input.oninput=()=>b.value=input.value;row.append(input)}row.append(btn('↑',()=>{if(i){[blocks[i-1],blocks[i]]=[blocks[i],blocks[i-1]];renderBlocks()}}),btn('↓',()=>{if(i<blocks.length-1){[blocks[i+1],blocks[i]]=[blocks[i],blocks[i+1]];renderBlocks()}}),btn('Sil',()=>{blocks.splice(i,1);renderBlocks()}));blockList.append(row)})};
+        const typeSelect=document.createElement('select');typeSelect.className='field mt-3';['Başlık','Paragraf','Alıntı','Madde listesi','Görsel','Video','Galeri','Ayırıcı','Buton'].forEach(v=>typeSelect.append(el('option',v)));
+        form.append(typeSelect,btn('Blok ekle',()=>{blocks.push({type:typeSelect.value,value:''});renderBlocks()},'btn mt-2'));renderBlocks();
+        const actions=el('div',null,'flex flex-wrap gap-2 mt-7');
+        const collect=status=>{const data=Object.fromEntries(Object.entries(inputs).map(([k,v])=>[k,v.value.trim()]));if(!data.title||!data.summary||!data.category){notify('Başlık, özet ve kategori zorunludur.');return null}
+          if(data.cover&&!/^https:\/\//i.test(data.cover)){notify('Kapak görseli için HTTPS adresi kullanın.');return null}
+          if(data.video&&!/^https:\/\//i.test(data.video)){notify('Video için HTTPS adresi kullanın.');return null}
+          return {...data,featured:check.checked,status,blocks:blocks.map(b=>({...b}))}
+        };
+        actions.append(btn('Taslak kaydet',()=>save('Taslak'),'btn primary'),btn('Yayınla',()=>save('Yayında')),btn('Canlı önizleme',()=>{const data=collect(post?.status||'Taslak');if(data){closeModal();readPost({...data,id:post?.id||'preview'})}}),btn('Vazgeç',closeModal));
+        function save(status){const data=collect(status);if(!data)return;if(post)Object.assign(post,data);else state.posts.push({...data,id:crypto.randomUUID?.()||String(Date.now()),created:Date.now()});closeModal();renderBlog();showModule('Blog Yönetimi');notify(status==='Taslak'?'Örnek taslak kaydedildi.':'Demo yazı ziyaretçi önizlemesinde yayınlandı.')}
+        form.append(actions);form.onsubmit=e=>e.preventDefault();root.append(form)
+      })
+    }
+    function renderAdminMedia(root,name){
+      root.append(el('p','Kaynak portre gerçek ekli görseldir. Yeni URL’ler ve dosya seçimi yalnızca demo önizlemedir; gerçek yükleme için sunucu bağlantısı gerekir.','muted mb-4'));
+      const relevant=state.media.filter(m=>name==='Video Yönetimi'||name==='Video Yükleme'?m.type==='Video':name==='Fotoğraf Yönetimi'?m.type==='Fotoğraf':true);
+      if(name==='Medya Kütüphanesi')root.append(el('p',pdfName+' · PDF eki: erişilebilir bağlantı yok.','admin-row'));
+      relevant.forEach(m=>{const row=el('div',null,'admin-row');row.append(el('strong',m.title),el('p',m.type+' · '+m.category+' · '+(m.visible?'Görünür':'Gizli')+(m.real?' · Gerçek ekli görsel':' · Demo medya'),'muted text-sm'));
+        const actions=el('div',null,'flex flex-wrap gap-2 mt-3');actions.append(btn('Önizle',()=>openMedia(m)),btn(m.visible?'Gizle':'Göster',()=>{m.visible=!m.visible;renderMedia();showModule(name);notify('Görünürlük güncellendi.')}));if(!m.real)actions.append(btn('Sil',()=>confirmDelete('Medya',()=>{state.media=state.media.filter(x=>x.id!==m.id);renderMedia();showModule(name)})));row.append(actions);root.append(row)});
+      const form=el('form',null,'mt-6 border-t pt-5');form.append(el('h3','Medya ekle · Demo','serif text-xl'));
+      const inputs={};[['title','Başlık'],['description','Açıklama'],['alt','Alt metin'],['url','HTTPS görsel/video adresi'],['category','Kategori'],['tags','Etiketler'],['order','Sıralama']].forEach(([key,label])=>{const f=field(label);inputs[key]=f.input;form.append(f.wrap)});
+      const type=document.createElement('select');type.className='field mt-3';['Fotoğraf','Video'].forEach(x=>type.append(el('option',x)));if(name.includes('Video'))type.value='Video';form.append(el('label','Medya türü','field-label'),type);
+      const visibility=document.createElement('input');visibility.type='checkbox';visibility.checked=true;const visibilityLabel=el('label',' Ziyaretçiye görünür','ml-2');form.append(visibility,visibilityLabel);
+      const file=field('Yerel dosya seçimi (demo)','', 'file');form.append(file.wrap,el('p','Seçilen dosya sunucuya yüklenmez.','muted text-xs'));
+      form.append(btn('Demo medyayı ekle',()=>{const title=inputs.title.value.trim(),url=inputs.url.value.trim();if(!title)return notify('Medya başlığı zorunludur.');if(url&&!/^https:\/\//i.test(url))return notify('HTTPS bağlantısı girin.');state.media.push({id:String(Date.now()),title,type:type.value,url,description:inputs.description.value.trim(),alt:inputs.alt.value.trim(),category:inputs.category.value.trim()||'Diğer',tags:inputs.tags.value.trim(),order:Number(inputs.order.value)||0,visible:visibility.checked});renderMedia();showModule(name);notify('Demo medya eklendi. Dosya yüklenmedi.')},'btn primary mt-4'));
+      form.onsubmit=e=>e.preventDefault();root.append(form)
+    }
+    function renderGalleries(root){
+      root.append(el('p','Galeriler oturumluk demo durumudur; gerçek yayın veya dosya depolama yoktur.','muted'));
+      state.galleries.forEach(g=>{const row=el('div',null,'admin-row');row.append(el('strong',g.title),el('p',(g.status?'Yayında':'Taslak')+' · '+g.description+' · '+g.media.length+' medya','muted'));
+        row.append(btn('Önizle',()=>openModal(g.title,r=>{r.append(el('p',g.description,'muted mb-4'));g.media.forEach(id=>{const m=state.media.find(x=>x.id===id);if(m)r.append(el('p',m.title,'admin-row'))})})),btn('Yayın durumunu değiştir',()=>{g.status=!g.status;renderGalleriesFresh();notify('Galeri demo durumu güncellendi.')}),btn('Sil',()=>confirmDelete('Galeri',()=>{state.galleries=state.galleries.filter(x=>x!==g);renderGalleriesFresh()})));root.append(row)});
+      const f=field('Galeri başlığı'),d=field('Açıklama','','textarea');root.append(f.wrap,d.wrap);
+      const choices=el('div',null,'my-3');state.media.forEach(m=>{const id='gallery-'+m.id;const input=document.createElement('input');input.type='checkbox';input.value=m.id;input.id=id;const label=el('label',' '+m.title,'ml-2');label.htmlFor=id;choices.append(input,label,document.createElement('br'))});root.append(el('p','Galeriye medya ekle','field-label'),choices);
+      root.append(btn('Galeriyi oluştur',()=>{if(!f.input.value.trim())return notify('Galeri başlığı zorunludur.');state.galleries.push({title:f.input.value.trim(),description:d.input.value.trim(),media:[...choices.querySelectorAll('input:checked')].map(x=>x.value),status:false});renderGalleriesFresh();notify('Demo galeri taslağı oluşturuldu.')},'btn primary'));
+      function renderGalleriesFresh(){showModule('Galeri Yönetimi')}
+    }
+    function renderSEO(root){
+      root.append(el('p','Bu önizleme gerçek arama motoru ayarlarını değiştirmez. Blog yazısına ait SEO alanları yazı editöründedir.','muted mb-4'));
+      const values=[['SEO başlığı','Barbaros Aşıcı | Satış Yönetimi ve İş Geliştirme'],['Meta açıklaması','Barbaros Aşıcı; satış yönetimi ve iş geliştirme. İzmir, Türkiye.'],['URL','barbaros-asici'],['Open Graph görseli','Ekli portre'],['Robots','index, follow'],['Sitemap','Üretim için sunucu bağlantısı gerekir'],['Breadcrumb','Ana Sayfa › Blog › Yazı'],['Yapılandırılmış veri','Gerçek yayın ortamında oluşturulur']];
+      values.forEach(([a,b])=>{const row=el('div',null,'admin-row');row.append(el('strong',a),el('p',b,'muted'));root.append(row)});
+      root.append(btn('Blog SEO önizlemesi',()=>openModal('Blog SEO önizlemesi',r=>r.append(el('p','Barbaros Aşıcı | Blog','gold'),el('p','Satış yönetimi ve iş geliştirme üzerine demo içerik alanı.','muted')))))
+    }
+    adminNav();showModule('Anasayfa');
+    let taps=0,tapTimer;
+    function enterAdmin(){$('#site').hidden=true;$('#admin').hidden=false;scrollTo(0,0);$('#admin-close').focus()}
+    $('#brand').onclick=()=>{if(matchMedia('(max-width:767px)').matches){taps++;clearTimeout(tapTimer);tapTimer=setTimeout(()=>taps=0,1800);if(taps>=5){taps=0;enterAdmin()}}else $('#ana-sayfa').scrollIntoView()};
+    $('#brand').onkeydown=e=>{if(e.altKey&&e.key.toLocaleLowerCase('tr')==='y'){e.preventDefault();enterAdmin()}};
+    $('#admin-close').onclick=()=>{$('#admin').hidden=true;$('#site').hidden=false;scrollTo(0,0);$('#brand').focus()};
 
-}
-
-</script>
-
-
-<script>
-
-if("serviceWorker" in navigator){
-
-window.addEventListener("load",function(){
-
-navigator.serviceWorker.register("sw.js");
-
-});
-
-}
-
-</script>
-
-
-</body>
-</html>
+    const validation={
+      'full-name':['name-error','Ad Soyad alanını doldurun.'],email:['email-error','Geçerli bir e-posta adresi girin.'],
+      subject:['subject-error','Konu alanını doldurun.'],message:['message-error','Mesaj alanını doldurun.'],consent:['consent-error','Devam etmek için onay vermelisiniz.']
+    };
+    function validate(id){const input=document.getElementById(id),value=input.type==='checkbox'?input.checked:input.value.trim();const invalid=id==='email'?!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value):!value;document.getElementById(validation[id][0]).textContent=invalid?validation[id][1]:'';input.setAttribute('aria-invalid',String(invalid));return !invalid}
+    Object.keys(validation).forEach(id=>document.getElementById(id).addEventListener(id==='consent'?'change':'input',()=>validate(id)));
+    let sdkReady=false;
+    (async()=>{try{const result=await window.dataSdk.init({onDataChanged(){}});sdkReady=result.isOk;if(!sdkReady)$('#form-status').textContent='Mesaj hizmeti şu anda kullanılamıyor.'}catch(_){$('#form-status').textContent='Mesaj hizmeti şu anda kullanılamıyor.'}})();
+    $('#contact-form').onsubmit=async e=>{e.preventDefault();if(!Object.keys(validation).map(validate).every(Boolean)){ $('#form-status').textContent='Lütfen işaretli alanları kontrol edin.';return}
+      if(!sdkReady){$('#form-status').textContent='Mesaj hizmeti şu anda kullanılamıyor.';return}
+      const button=$('#send-button');button.disabled=true;$('#form-status').textContent='Mesaj kaydediliyor…';
+      try{const result=await window.dataSdk.create({full_name:$('#full-name').value.trim(),email:$('#email').value.trim(),subject:$('#subject').value.trim(),message:$('#message').value.trim(),consent:true,submitted_at:new Date().toISOString()});
+        if(result.isOk){$('#contact-form').reset();$('#form-status').textContent='Mesajınız Canva Sheet içine kaydedildi. Teşekkürler.';notify('Mesajınız kaydedildi.')}
+        else $('#form-status').textContent='Mesaj kaydedilemedi. Lütfen tekrar deneyin.'
+      }catch(_){$('#form-status').textContent='Bağlantı hatası. Lütfen tekrar deneyin.'}finally{button.disabled=false}
+    };
+  })();
+  </script>
+ 
+</body></html>
